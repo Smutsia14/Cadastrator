@@ -1,0 +1,9 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css");
+
+.example-spacer{
+    flex:1 1 auto;
+}
+.estiloNav{
+    font-size: 1.5rem; height: 80px; color: whitesmoke; font-family: 'Fraunces', serif;
+    background: linear-gradient(329.54deg, #171016  0%  , #5F1AD6 100%);
+};

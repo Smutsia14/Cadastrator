@@ -1,0 +1,21 @@
+.desceUmPouco{
+    padding-top: 10px;
+}
+.barratopo{
+    background-color: #5F1AD6; color: whitesmoke;
+}
+.btNovo{
+    background-color: #FFF51F; width: 20%;
+}
+h1{
+    font-family: 'Yusei Magic', serif;
+}
+h2{
+    font-family: 'Yusei Magic', serif;
+}
+h2 a{
+    text-decoration: none;
+    color: #5F1AD6;
+    font-family: 'Fraunces', serif;
+
+}

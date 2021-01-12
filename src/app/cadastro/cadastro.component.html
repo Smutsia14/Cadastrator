@@ -1,0 +1,94 @@
+<div class="modal-header">
+    <h4 class="modal-title pull-left">Novo Usuário</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="onClose()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+<div class="modal-body">
+<h1 class="display-3" style="text-align: center;">Formulário</h1>
+<form #f="ngForm" (ngSubmit)="onSubmit(f)">
+
+  <div class="form-group">
+    <label for="nome">Nome/Razão Social</label>
+    <input type="text" [class.is-invalid]="!nome.valid && nome.touched" class="form-control" id="nome"
+    name="nome" placeholder="Insira Seu Nome" 
+    ngModel required #nome="ngModel" [(ngModel)]="usuarios.nome">
+    <div *ngIf="!nome.valid && nome.touched" id="nome" class="invalid-feedback">
+      Este é um campo obrigatório
+    </div>
+  </div>
+ 
+  <div class="form-group">
+    <label for="tipo" class="control-label">Declare Seu Tipo de Pessoa</label>
+    <select class="custom-select" [class.is-invalid]="!tipo.valid && tipo.touched" id="tipo" name="tipo" ngModel required #tipo="ngModel" [(ngModel)]="usuarios.tipo">
+      <option selected></option>
+      <option value="Fisico">Físico</option>
+      <option value="Juridico">Jurídico</option>
+    </select>
+    <div *ngIf="!tipo.valid && tipo.touched" id="tipo" class="invalid-feedback">
+      Este é um campo obrigatório
+    </div>
+  </div>
+
+  <div class="form-group" >
+    <label for="fantasia" class="control-label">Nome Fantasia</label>
+      <input type="text" class="form-control" id="fantasia" name="fantasia" ngModel #fantasia="ngModel" [(ngModel)]="usuarios.fantasia">
+  </div>
+
+  <div class="form-group">
+    <label for="documento" class="control-label">Documento</label>
+    <input type="text" [class.is-invalid]="!documento.valid && documento.touched" class="form-control" id="documento" name="documento" placeholder="CPF ou CNPJ" ngModel required #documento="ngModel" [(ngModel)]="usuarios.documento">
+    <div *ngIf="!documento.valid && documento.touched" id="documento" class="invalid-feedback">
+      Este é um campo obrigatório
+    </div>
+  </div>
+<div ngModelGroup="endereco">
+  <div class="row"> 
+  <div class="col form-group">
+    <label for="cep" class="control-label">CEP</label>
+    <input type="number" [class.is-invalid]="!cep.valid && cep.touched" class="form-control" id="cep" name="cep" placeholder="Digite um CEP" ngModel required #cep="ngModel" 
+    (blur)="consultaCEP($event.target.value, f)" [(ngModel)]="usuarios.cep">
+    <div *ngIf="!cep.valid && cep.touched" id="cep" class="invalid-feedback">
+      Este é um campo obrigatório
+    </div>
+  </div>
+
+  <div class="col form-group">
+    <label for="rua" class="control-label">Rua</label>
+    <input type="text" class="form-control" id="rua" name="rua" ngModel #rua="ngModel" readonly [(ngModel)]="usuarios.rua">
+  </div>
+
+</div>
+
+  <div class="row">
+    <div class="col form-group">
+      <label for="bairro" class="control-label">Bairro</label>
+      <input type="text" class="form-control" id="bairro" name="bairro" ngModel #bairro="ngModel" readonly [(ngModel)]="usuarios.bairro"> 
+    </div>
+
+    <div class="col form-group">
+      <label for="cidade" class="control-label">Cidade</label>
+      <input type="text" class="form-control" id="cidade" name="cidade" ngModel #cidade="ngModel" readonly [(ngModel)]="usuarios.cidade">
+    </div>
+  </div>
+</div>
+  <div class="form-group">
+    <label for="email" class="control-label">E-mail</label>
+    <input type="email" [class.is-invalid]="!email.valid && email.touched" class="form-control" id="email" name="email" placeholder="Example@email.com" ngModel required #email="ngModel" [(ngModel)]="usuarios.email">
+    <div *ngIf="!email.valid && email.touched" id="email" class="invalid-feedback">
+      Este é um campo obrigatório
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="telefone" class="control-label">Telefone</label>
+    <input type="number" [class.is-invalid]="!telefone.valid && telefone.touched" class="form-control" id="telefone" name="telefone" placeholder="Insira um numero de contato" ngModel required #telefone="ngModel" [(ngModel)]="usuarios.telefone">
+    <div *ngIf="!telefone.valid && telefone.touched" id="telefone" class="invalid-feedback">
+      Este é um campo obrigatório
+    </div>
+  </div>
+
+  <br>
+  <button class="btn btn-primary" type="submit" (click)="onClose()" [disabled]="!f.valid">Enviar</button>
+</form>
+</div>
